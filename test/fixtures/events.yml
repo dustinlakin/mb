@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  sport: 
+  name: MyString
+  description: MyText
+  event_date: 2012-04-22 18:10:24
+  bet_by: 2012-04-22 18:10:24
+
+two:
+  sport: 
+  name: MyString
+  description: MyText
+  event_date: 2012-04-22 18:10:24
+  bet_by: 2012-04-22 18:10:24

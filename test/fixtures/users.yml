@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  fb: 
+  name: MyString
+  user: MyString
+  password: MyString
+  currency: 
+
+two:
+  fb: 
+  name: MyString
+  user: MyString
+  password: MyString
+  currency: 

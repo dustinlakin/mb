@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  min_bet: 1
+  max_bet: 1
+  start_date: 2012-04-15 17:54:51
+  end_date: 2012-04-15 17:54:51
+  starting_funds: 1
+  join_price: 1
+  password: MyString
+
+two:
+  name: MyString
+  min_bet: 1
+  max_bet: 1
+  start_date: 2012-04-15 17:54:51
+  end_date: 2012-04-15 17:54:51
+  starting_funds: 1
+  join_price: 1
+  password: MyString

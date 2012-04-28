@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @group.name %>
+</p>
+
+<p>
+  <b>Min bet:</b>
+  <%= @group.min_bet %>
+</p>
+
+<p>
+  <b>Max bet:</b>
+  <%= @group.max_bet %>
+</p>
+
+<p>
+  <b>Start date:</b>
+  <%= @group.start_date %>
+</p>
+
+<p>
+  <b>End date:</b>
+  <%= @group.end_date %>
+</p>
+
+<p>
+  <b>Starting funds:</b>
+  <%= @group.starting_funds %>
+</p>
+
+<p>
+  <b>Join price:</b>
+  <%= @group.join_price %>
+</p>
+
+<p>
+  <b>Password:</b>
+  <%= @group.password %>
+</p>
+
+
+<%= link_to 'Edit', edit_group_path(@group) %> |
+<%= link_to 'Back', groups_path %>
