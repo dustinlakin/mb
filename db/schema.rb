@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120423071918) do
+ActiveRecord::Schema.define(:version => 20120429014931) do
 
   create_table "events", :force => true do |t|
     t.integer  "sport_id"
@@ -45,6 +45,26 @@ ActiveRecord::Schema.define(:version => 20120423071918) do
     t.datetime "updated_at",                                :null => false
   end
 
+  create_table "money_lines", :force => true do |t|
+    t.integer  "event_id"
+    t.integer  "team_id"
+    t.integer  "odds"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "money_lines", ["event_id"], :name => "index_money_lines_on_event_id"
+  add_index "money_lines", ["team_id"], :name => "index_money_lines_on_team_id"
+
+  create_table "over_unders", :force => true do |t|
+    t.integer  "event_id"
+    t.integer  "odds"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "over_unders", ["event_id"], :name => "index_over_unders_on_event_id"
+
   create_table "schedules", :force => true do |t|
     t.integer  "team_id"
     t.integer  "event_id"
@@ -68,6 +88,17 @@ ActiveRecord::Schema.define(:version => 20120423071918) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  create_table "spreads", :force => true do |t|
+    t.integer  "event_id"
+    t.integer  "team_id"
+    t.integer  "odds"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "spreads", ["event_id"], :name => "index_spreads_on_event_id"
+  add_index "spreads", ["team_id"], :name => "index_spreads_on_team_id"
 
   create_table "teams", :force => true do |t|
     t.string   "name"

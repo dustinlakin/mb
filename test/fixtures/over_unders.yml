@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  event: 
+  odds: 1
+
+two:
+  event: 
+  odds: 1
