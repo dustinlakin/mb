@@ -6,6 +6,8 @@ Mockbets::Application.routes.draw do
   get "/signup", :to => "user#new"
   post "/signup", :to => "user#create"
 
+  get "/find", :to => "event#find"
+
   resources :user
   resources :groups
   #match "user/:name" => "home#index"
