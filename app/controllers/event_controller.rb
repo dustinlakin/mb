@@ -1,8 +1,9 @@
 class EventController < ApplicationController
 	def find
-		Rails.logger.info("PARAMS: #{params.inspect}")
+		#Rails.logger.info("PARAMS: #{params.inspect}")
 		#@t = Team.where(:name => params["team"])
-		@e = Event.joins(:teams).where("teams.name" => params["team"])
+		#@e = Event.joins(:teams).where("teams.name" => params["team"])
+		@e = Event.filtered(params)
 		respond_to do |format|
     		format.html  
     		format.json  { render :json => @e}
