@@ -8,20 +8,20 @@ class Event < ActiveRecord::Base
 
 	def self.filtered(params)
 		hash = {}
-		@r = Event
-		@r = @r.includes(:moneyLines).includes(:teams)
+		r = Event
+		r = r.includes(:moneyLines).includes(:schedules).includes(:teams)
 
 		if params["sport_cat"] 
-			@r = @r.joins(:sport)
+			r = r.joins(:sport)
 			hash["sports.sportsCategory_id"] = params["sport_cat"]
 		end
 		if params["sport"] 
-			@r = @r.joins(:sport)
+			r = r.joins(:sport)
 			hash["sports.id"] = params["sport"]
 		end
 		if params["team"] 
-			hash["teams.name"] = params["team"]
+			hash["schedules.team_id"] = params["team"]
 		end
-		@r.where(hash).uniq
+		r.where(hash).uniq
 	end
 end
