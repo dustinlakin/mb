@@ -4,6 +4,7 @@ class EventController < ApplicationController
 		#@t = Team.where(:name => params["team"])
 		#@e = Event.joins(:teams).where("teams.name" => params["team"])
 		@events = Event.filtered(params)
+		@allTeams = Team.where(:sport_id => 1)
 
 
 		respond_to do |format|
