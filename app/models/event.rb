@@ -11,9 +11,9 @@ class Event < ActiveRecord::Base
 		r = Event
 		r = r.includes(:moneyLines).includes(:spreads).includes(:overUnders).includes(:schedules).includes(:teams)
 
-		if params["sport_cat"] 
+		if params["category"] 
 			r = r.joins(:sport)
-			hash["sports.sportsCategory_id"] = params["sport_cat"]
+			hash["sports.sportsCategory_id"] = params["category"]
 		end
 		if params["sport"] 
 			r = r.joins(:sport)

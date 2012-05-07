@@ -4,14 +4,26 @@
 Events
 <br/>
 
-<select data-placeholder="Your Favorite Football Team" style="width:350px;" class="chzn-select" multiple tabindex="6">
-          <option value=""></option>
-          <%@allTeams.each do |t|%>
-          <option value="<%=t.id%>"><%=t.city%> <%=t.name%></option>
-          <%end%>
-        </select>
-        <br/>
-<%@events.each do |e|%>
-<%= render :partial => "event/singleFind", :locals => {:e => e} %>
-<%end%>
+<select id="sports-category-select" data-placeholder="Select Sports Category" style="width:350px;" class="chzn-select" multiple tabindex="6">
+	<option value=""></option>
+	<%@allSportsCat.each do |sc|%>
+	<option value="<%=sc.id%>"><%=sc.name%></option>
+	<%end%>
+</select>
+<select id="sports-select" data-placeholder="Select Sports" style="width:350px;" class="chzn-select" multiple tabindex="6">
+	<option value=""></option>
+	<%@allSports.each do |s|%>
+	<option value="<%=s.id%>"><%=s.name%></option>
+	<%end%>
+</select>
+<select id="team-select" data-placeholder="Select Teams" style="width:350px;" class="chzn-select" multiple tabindex="6">
+	<option value=""></option>
+	<%@allTeams.each do |t|%>
+	<option value="<%=t.id%>"><%=t.city%> <%=t.name%></option>
+	<%end%>
+</select>
+<br/>
 
+<div id="results">
+	<%= render :partial => "event/results", :locals => {:events => @events}%>
+</div>

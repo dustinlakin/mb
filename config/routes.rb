@@ -7,6 +7,7 @@ Mockbets::Application.routes.draw do
   post "/signup", :to => "user#create"
 
   get "/find", :to => "event#find"
+  get "/results", :to => "event#results"
 
   resources :user
   resources :groups
