@@ -5,11 +5,5 @@ class EventController < ApplicationController
 		#@e = Event.joins(:teams).where("teams.name" => params["team"])
 		@events = Event.filtered(params)
 		@allTeams = Team.where(:sport_id => 1)
-
-
-		respond_to do |format|
-    		format.html  
-    		format.json  { render :json => @e}
-  		end
 	end
 end
