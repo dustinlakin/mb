@@ -14,9 +14,8 @@ class EventController < ApplicationController
 		render :layout => false
 	end
 
-	def test
+	def selects
 		@result = SportsCategory.includes(:sports => :teams).all.map {|s| s.test}
 		render :json => @result
 	end
-
 end
