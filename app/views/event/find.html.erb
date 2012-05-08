@@ -18,8 +18,12 @@ Events
 </select>
 <select id="team-select" data-placeholder="Select Teams" style="width:350px;" class="chzn-select" multiple tabindex="6">
 	<option value=""></option>
-	<%@allTeams.each do |t|%>
-	<option value="<%=t.id%>"><%=t.city%> <%=t.name%></option>
+	<%@allSports.each do |s|%>
+  <optgroup label="<%=s.name%>">
+    <%s.teams.each do |t|%>
+      <option value="<%=t.id%>"><%=t.city%> <%=t.name%></option>
+    <%end%>
+  </optgroup>
 	<%end%>
 </select>
 <br/>

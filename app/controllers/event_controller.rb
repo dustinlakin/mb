@@ -3,8 +3,7 @@ class EventController < ApplicationController
 		#Rails.logger.info("PARAMS: #{params.inspect}")
 		@events = Event.filtered(params)
 		@allSportsCat = SportsCategory.all
-		@allSports = Sport.all
-		@allTeams = Team.where(:sport_id => 1)
+		@allSports = Sport.includes(:teams).all
 	end
 
 	def results
@@ -13,4 +12,11 @@ class EventController < ApplicationController
 			#format.js { render :layout => false }
 		#end
 		render :layout => false
+	end
+
+	def test
+		@result = SportsCategory.includes(:sports => :teams).all.map {|s| s.test}
+		render :json => @result
+	end
+
 end
