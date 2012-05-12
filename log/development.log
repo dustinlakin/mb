@@ -29783,3 +29783,82 @@ PARAMS: {"id"=>[1]}
   Rendered event/_results.html.erb (9.2ms)
   Rendered event/results.html.erb (10.4ms)
 Completed 200 OK in 20ms (Views: 12.8ms | ActiveRecord: 5.9ms)
+
+
+Started GET "/find" for 127.0.0.1 at 2012-05-09 00:26:11 -0700
+Processing by EventController#find as HTML
+PARAMS: {}
+  [1m[36mSportsCategory Load (23.7ms)[0m  [1mSELECT `sports_categories`.* FROM `sports_categories` [0m
+  [1m[35mSport Load (0.4ms)[0m  SELECT `sports`.* FROM `sports` 
+  [1m[36mTeam Load (5.5ms)[0m  [1mSELECT `teams`.* FROM `teams` WHERE `teams`.`sport_id` = 1[0m
+  [1m[35mEvent Load (0.7ms)[0m  SELECT DISTINCT `events`.* FROM `events` 
+  [1m[36mMoneyLine Load (0.7ms)[0m  [1mSELECT `money_lines`.* FROM `money_lines` WHERE `money_lines`.`event_id` IN (1, 2)[0m
+  [1m[35mSpread Load (0.5ms)[0m  SELECT `spreads`.* FROM `spreads` WHERE `spreads`.`event_id` IN (1, 2)
+  [1m[36mOverUnder Load (0.6ms)[0m  [1mSELECT `over_unders`.* FROM `over_unders` WHERE `over_unders`.`event_id` IN (1, 2)[0m
+  [1m[35mSchedule Load (0.6ms)[0m  SELECT `schedules`.* FROM `schedules` WHERE `schedules`.`event_id` IN (1, 2)
+  [1m[36mTeam Load (0.8ms)[0m  [1mSELECT `teams`.* FROM `teams` WHERE `teams`.`id` IN (1, 2, 4, 3)[0m
+  Rendered event/_singleFind.html.erb (5.2ms)
+  Rendered event/_singleFind.html.erb (0.7ms)
+  Rendered event/_results.html.erb (337.5ms)
+  Rendered event/find.html.erb within layouts/application (413.3ms)
+Completed 200 OK in 747ms (Views: 548.8ms | ActiveRecord: 55.5ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-05-09 00:26:14 -0700
+Served asset /application.css - 304 Not Modified (28ms)
+
+
+Started GET "/assets/event.css?body=1" for 127.0.0.1 at 2012-05-09 00:26:14 -0700
+Served asset /event.css - 304 Not Modified (4ms)
+
+
+Started GET "/assets/home.css?body=1" for 127.0.0.1 at 2012-05-09 00:26:14 -0700
+Served asset /home.css - 304 Not Modified (7ms)
+
+
+Started GET "/assets/groups.css?body=1" for 127.0.0.1 at 2012-05-09 00:26:14 -0700
+Served asset /groups.css - 304 Not Modified (15ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2012-05-09 00:26:14 -0700
+Served asset /scaffolds.css - 304 Not Modified (5ms)
+
+
+Started GET "/assets/user.css?body=1" for 127.0.0.1 at 2012-05-09 00:26:14 -0700
+Served asset /user.css - 304 Not Modified (18ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-05-09 00:26:14 -0700
+Served asset /jquery.js - 304 Not Modified (68ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-05-09 00:26:14 -0700
+Served asset /jquery_ujs.js - 304 Not Modified (13ms)
+
+
+Started GET "/assets/event.js?body=1" for 127.0.0.1 at 2012-05-09 00:26:14 -0700
+Served asset /event.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/groups.js?body=1" for 127.0.0.1 at 2012-05-09 00:26:14 -0700
+Served asset /groups.js - 304 Not Modified (4ms)
+
+
+Started GET "/assets/user.js?body=1" for 127.0.0.1 at 2012-05-09 00:26:14 -0700
+Served asset /user.js - 304 Not Modified (10ms)
+
+
+Started GET "/assets/home.js?body=1" for 127.0.0.1 at 2012-05-09 00:26:14 -0700
+Served asset /home.js - 304 Not Modified (11ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-05-09 00:26:14 -0700
+Served asset /application.js - 304 Not Modified (48ms)
+
+
+Started GET "/assets/chosen.jquery.min.js?body=1" for 127.0.0.1 at 2012-05-09 00:26:14 -0700
+Served asset /chosen.jquery.min.js - 304 Not Modified (9ms)
+
+
+Started GET "/assets/chosen.css?body=1" for 127.0.0.1 at 2012-05-09 00:26:14 -0700
+Served asset /chosen.css - 304 Not Modified (9ms)
