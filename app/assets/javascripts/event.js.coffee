@@ -4,12 +4,28 @@
 
 
 @initialized = false
+@select_data = null
+
 $(document).ready ->
 	if $(".chzn-select").length > 0 && !@initialized
 		@initialized = true
-		$(".chzn-select").chosen() 
-		$(".chzn-select-deselect").chosen({allow_single_deselect:true})
-		setup_sports()
+		$("#sports-category-select").chosen() 
+		$("#sports-category-select").chosen({allow_single_deselect:true})
+		get_select_data()
+
+get_select_data = ->
+	$.ajax
+		url : "selects"
+		success : (data) =>
+			@select_data = data
+			window.test = data
+			setup_selects()
+
+setup_selects = ->
+	sc_select = ''
+	for sc in @select_data
+		sc_select += '<option id="' + sc.id + '">' + sc.name + '</option>'
+	$("#sports-category-select").html(sc_select).trigger("liszt:updated")
 
 setup_sports = ->
 	$(".chzn-select").on "change", (evt)->

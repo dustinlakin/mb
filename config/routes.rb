@@ -8,6 +8,7 @@ Mockbets::Application.routes.draw do
 
   get "/find", :to => "event#find"
   get "/results", :to => "event#results"
+  get "/selects", :to => "event#selects"
 
   resources :user
   resources :groups

@@ -13,11 +13,19 @@ class Event < ActiveRecord::Base
 
 		if params["category"] 
 			r = r.joins(:sport)
-			hash["sports.sportsCategory_id"] = params["category"]
+			categories = params["category"]
+			if categories.include? ","
+				 categories = categories.split(",")
+			end
+			hash["sports.sportsCategory_id"] = categories 
 		end
 		if params["sport"] 
 			r = r.joins(:sport)
-			hash["sports.id"] = params["sport"]
+			sports = params["sport"]
+			if sports.include? ","
+				 sports = sports.split(",")
+			end
+			hash["sports.id"] = sports
 		end
 		if params["team"] 
 			teams = params["team"]
