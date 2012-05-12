@@ -11,7 +11,12 @@ $(document).ready ->
 		@initialized = true
 		$("#sports-category-select").chosen() 
 		$("#sports-category-select").chosen({allow_single_deselect:true})
+		$("#sports-select").chosen() 
+		$("#sports-select").chosen({allow_single_deselect:true})
+		$("#team-select").chosen() 
+		$("#team-select").chosen({allow_single_deselect:true})
 		get_select_data()
+		setup_sports()
 
 get_select_data = ->
 	$.ajax
@@ -24,7 +29,8 @@ get_select_data = ->
 setup_selects = ->
 	sc_select = ''
 	for sc in @select_data
-		sc_select += '<option id="' + sc.id + '">' + sc.name + '</option>'
+		sc_select += '<option value="' + sc.id + '">' + sc.name + '</option>'
+	console.log(sc_select)
 	$("#sports-category-select").html(sc_select).trigger("liszt:updated")
 
 setup_sports = ->
