@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
 	has_many :memberships
 	has_many :groups, :through => :memberships, :class_name => "Group", :foreign_key => "group_id" 
+	has_many :bets, :through => :memberships
 
 	validates :name, :presence => true
 	validates :user, :presence => true

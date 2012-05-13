@@ -11,7 +11,33 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120429014931) do
+ActiveRecord::Schema.define(:version => 20120513064423) do
+
+  create_table "bets", :force => true do |t|
+    t.integer  "membership_id"
+    t.integer  "amount"
+    t.decimal  "odds",          :precision => 10, :scale => 0
+    t.integer  "moneyLine_id"
+    t.integer  "overUnder_id"
+    t.integer  "spread_id"
+    t.datetime "created_at",                                   :null => false
+    t.datetime "updated_at",                                   :null => false
+  end
+
+  add_index "bets", ["membership_id"], :name => "index_bets_on_membership_id"
+  add_index "bets", ["moneyLine_id"], :name => "index_bets_on_moneyLine_id"
+  add_index "bets", ["overUnder_id"], :name => "index_bets_on_overUnder_id"
+  add_index "bets", ["spread_id"], :name => "index_bets_on_spread_id"
+
+  create_table "category_rules", :force => true do |t|
+    t.integer  "group_id"
+    t.integer  "sportsCategory_id"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+  end
+
+  add_index "category_rules", ["group_id"], :name => "index_category_rules_on_group_id"
+  add_index "category_rules", ["sportsCategory_id"], :name => "index_category_rules_on_sportsCategory_id"
 
   create_table "events", :force => true do |t|
     t.integer  "sport_id"
@@ -75,6 +101,16 @@ ActiveRecord::Schema.define(:version => 20120429014931) do
 
   add_index "schedules", ["event_id"], :name => "index_schedules_on_event_id"
   add_index "schedules", ["team_id"], :name => "index_schedules_on_team_id"
+
+  create_table "sport_rules", :force => true do |t|
+    t.integer  "sport_id"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+    t.integer  "category_rule_id"
+  end
+
+  add_index "sport_rules", ["category_rule_id"], :name => "index_sport_rules_on_categoryRule_id"
+  add_index "sport_rules", ["sport_id"], :name => "index_sport_rules_on_sport_id"
 
   create_table "sports", :force => true do |t|
     t.integer  "sportsCategory_id"

@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  membership: 
+  amount: 
+  odds: 9.99
+  moneyLine: 
+  overUnder: 
+  spread: 
+
+two:
+  membership: 
+  amount: 
+  odds: 9.99
+  moneyLine: 
+  overUnder: 
+  spread: 
