@@ -10,6 +10,8 @@ class UserController < ApplicationController
 
 	def show
 		@User = User.find_by_user(params[:id])
+		@Memberships = @User.memberships.includes(:group)
+
 
 		respond_to do |format|
     		format.html  

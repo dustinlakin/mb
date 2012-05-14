@@ -35,11 +35,19 @@
   <%= @group.join_price %>
 </p>
 
-<p>
-  <b>Password:</b>
-  <%= @group.password %>
-</p>
+<p>Rankings</b>
+  <ol>
+  <% for member in @memberships %> 
+    <li>
+      <%= link_to member.user.user, member.user %> 
+      <% if member.is_admin%>
+        (A)
+      <% end %> @ $<%=member.funds%>
 
+
+    </li>
+  <% end %>
+</ol>
 
 <%= link_to 'Edit', edit_group_path(@group) %> |
 <%= link_to 'Back', groups_path %>

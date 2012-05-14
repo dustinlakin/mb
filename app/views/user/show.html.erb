@@ -1,1 +1,12 @@
 <%=@User.name%>
+
+<h1>Groups</h1>
+<% @Memberships.each do |m| %>
+<h2><%= m.group.name %></h2>
+<ul>
+	<li><%= m.funds %></li>
+	<% if m.is_admin %>
+	<li>Admin</li>
+	<% end %>
+</ul>
+<% end %>
