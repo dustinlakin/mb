@@ -1,20 +1,32 @@
 name: <%=e.name%><br/>
 bet_by: <%=e.bet_by%><br/>
 <%e.teams.each do |t|%>
-	Team:
 	<ul>
-		<li>city: <%=t.city%></li>
-		<li>name: <%=t.name%></li>
+		<li><%=t.city + " " + t.name%></li>
  		<%e.schedules.each do |s|
  			if s.team_id == t.id && s.home%>
  			<li>Home</li>
  			<%end
- 			end%>
- 			<%e.moneyLines.each do |m|
- 				if m.team_id == t.id%>
- 				MoneyLine : <%=m.odds%><br/>
- 			<%
- 				end
  		end%>
+ 		<%e.moneyLines.each do |m|
+ 			if m.team_id == t.id%>
+ 			MoneyLine : <%=m.odds%><br/>
+			<%end
+		end
+		e.spreads.each do |sp|
+			if sp.team_id == t.id%>
+			Spread : <%=sp.odds%><br/>
+			<%end
+		end%>
+ 	
  	</ul>
-<%end%>
+ <%end
+ 	e.overUnders.each do |ou|
+ 		odds = ou.odds? ? "(" + ou.odds.to_s + ")" : ""
+ 		if ou.over?%>
+ 		Over 
+ 		<%else%>
+ 		Under 
+ 		<%end%>
+ 		<%=ou.points.to_s + odds.to_s%><br/>
+ 		<%end%>

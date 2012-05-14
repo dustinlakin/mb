@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120513064423) do
+ActiveRecord::Schema.define(:version => 20120514070531) do
 
   create_table "bets", :force => true do |t|
     t.integer  "membership_id"
@@ -87,6 +87,8 @@ ActiveRecord::Schema.define(:version => 20120513064423) do
     t.integer  "odds"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "points"
+    t.boolean  "over"
   end
 
   add_index "over_unders", ["event_id"], :name => "index_over_unders_on_event_id"
@@ -128,9 +130,9 @@ ActiveRecord::Schema.define(:version => 20120513064423) do
   create_table "spreads", :force => true do |t|
     t.integer  "event_id"
     t.integer  "team_id"
-    t.integer  "odds"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.decimal  "odds",       :precision => 10, :scale => 0
+    t.datetime "created_at",                                :null => false
+    t.datetime "updated_at",                                :null => false
   end
 
   add_index "spreads", ["event_id"], :name => "index_spreads_on_event_id"
