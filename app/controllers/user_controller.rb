@@ -11,7 +11,7 @@ class UserController < ApplicationController
 	def show
 		@User = User.find_by_user(params[:id])
 		@Memberships = @User.memberships.includes(:group)
-
+		@Bets = @User.bets.includes({:moneyLine => [:team, :event]})
 
 		respond_to do |format|
     		format.html  

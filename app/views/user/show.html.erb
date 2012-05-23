@@ -10,3 +10,14 @@
 	<% end %>
 </ul>
 <% end %>
+
+<h2>Bets</h2>
+<% @Bets.each do |b|%>
+<ul>
+	<li>Event: <%=b.moneyLine.event.name%></li>
+	<li>Amount:<%=b.amount%></li>
+	<li>Team: <%=b.moneyLine.team.name%></li>
+	<li>Odds: <%=b.moneyLine.odds%></li>
+
+</ul>
+<% end %>
