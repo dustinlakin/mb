@@ -6,6 +6,27 @@ class Event < ActiveRecord::Base
 	has_many :moneyLines
 	has_many :spreads
 
+	def render_json(options = {})
+		options = { 
+			:include => {
+				:teams => {
+					:only => [:name, :id], 
+				},
+				:overUnders => {
+					:only => [:id, :odds, :points, :over]
+				},
+				:spreads => {
+					:only => [:id, :team_id, :odds]
+				},
+				:moneyLines => {
+					:only => [:id, :team_id, :odds]
+				}
+			}, 
+			:only => [:name, :id, :bet_by]
+			}.update(options)
+		as_json(options)
+	end
+
 	def self.filtered(params)
 		hash = {}
 		r = Event

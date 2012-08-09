@@ -13,6 +13,12 @@ class EventController < ApplicationController
 		#end
 		render :layout => false
 	end
+	def eventResults
+		# @events = Event.first.includes(:teams);
+		@events = Event.includes(:teams,:overUnders,:moneyLines,:spreads).all.map{|e| e.render_json}
+		# @result = SportsCategory.includes(:sports => :teams).all.map {|s| s.test}
+		render :json => @events
+	end
 
 	def selects
 		@result = SportsCategory.includes(:sports => :teams).all.map {|s| s.test}
