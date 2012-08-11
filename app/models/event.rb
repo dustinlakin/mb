@@ -30,7 +30,6 @@ class Event < ActiveRecord::Base
 			}, 
 			:only => [:name, :id, :bet_by]
 			}.update(options)
-		Rails.logger.info("PARAMS: #{options}")
 		as_json(options)
 	end
 

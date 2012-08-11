@@ -12,4 +12,10 @@ class User < ActiveRecord::Base
 	def to_param
 		"#{user}"
 	end 
+
+	def find_bettable_groups(event)
+		self.groups.keep_if do |g|
+			g.bettable_event(event)
+		end
+	end
 end

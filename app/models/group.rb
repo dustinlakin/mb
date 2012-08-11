@@ -9,4 +9,8 @@ class Group < ActiveRecord::Base
 
 	#has_many :sportRules
 	#has_many :sports, :through => :sportRules
+
+	def bettable_event(event)
+		self.sports.include?(event.sport)
+	end
 end

@@ -10,6 +10,7 @@ Mockbets::Application.routes.draw do
   get "/results", :to => "event#results"
   get "/selects", :to => "event#selects"
   get "/eventResults", :to => "event#eventResults"
+  get "/getValidGroups", :to => "user#find_groups_by_event"
 
   resources :user
   resources :groups

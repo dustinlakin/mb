@@ -36,4 +36,13 @@ class UserController < ApplicationController
 			end
 		end
 	end
+
+	def find_groups_by_event
+		@user = User.find(params[:user])
+		event = Event.find(params[:event])
+
+		groups = @user.find_bettable_groups(event)
+
+		render :json => groups, :callback => params[:callback]
+	end
 end
