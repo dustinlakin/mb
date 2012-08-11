@@ -1,4 +1,5 @@
 class Spread < ActiveRecord::Base
-  belongs_to :event
-  belongs_to :team
+  # belongs_to :event
+  # belongs_to :team
+  belongs_to :schedule
 end

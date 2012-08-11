@@ -3,27 +3,34 @@ class Event < ActiveRecord::Base
 	has_many :schedules
 	has_many :teams, :through => :schedules
 	has_many :overUnders
-	has_many :moneyLines
-	has_many :spreads
+	has_many :moneyLines, :through => :schedules
+	has_many :spreads, :through => :schedules
 
 	def render_json(options = {})
 		options = { 
 			:include => {
-				:teams => {
-					:only => [:name, :id], 
+				:schedules => {
+					:only => [:home, :id], 
+					:include =>{
+						:team => {
+							:only => [:name, :id, :city]
+						},
+						:spread => {
+							:only => [:id, :odds]
+						},
+						:moneyLine => {
+							:only => [:id, :odds]
+						},
+					}
 				},
 				:overUnders => {
 					:only => [:id, :odds, :points, :over]
 				},
-				:spreads => {
-					:only => [:id, :team_id, :odds]
-				},
-				:moneyLines => {
-					:only => [:id, :team_id, :odds]
-				}
+				
 			}, 
 			:only => [:name, :id, :bet_by]
 			}.update(options)
+		Rails.logger.info("PARAMS: #{options}")
 		as_json(options)
 	end
 

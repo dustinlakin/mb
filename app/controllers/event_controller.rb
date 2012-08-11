@@ -15,9 +15,10 @@ class EventController < ApplicationController
 	end
 	def eventResults
 		# @events = Event.first.includes(:teams);
-		@events = Event.includes(:teams,:overUnders,:moneyLines,:spreads).all.map{|e| e.render_json}
+		# @events = Event.includes(:teams,:overUnders,:moneyLines,:schedules).all.map{|e| e.render_json}
+		@events = Event.includes(:teams,:overUnders,:schedules,:moneyLines,:spreads).first.render_json
 		# @result = SportsCategory.includes(:sports => :teams).all.map {|s| s.test}
-		render :json => @events
+		render :json => @events, :callback => params[:callback]
 	end
 
 	def selects
