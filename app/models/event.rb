@@ -16,7 +16,7 @@ class Event < ActiveRecord::Base
 							:only => [:name, :id, :city]
 						},
 						:spread => {
-							:only => [:id, :odds]
+							:only => [:id, :odds, :points]
 						},
 						:moneyLine => {
 							:only => [:id, :odds]
